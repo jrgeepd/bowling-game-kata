@@ -4,7 +4,7 @@ class ScoreCard:
     Domain: Bowling
     """
 
-    def __init__(self, notation: str):
+    def __init__(self, notation):
         self.rolls: list[int] = []
         self._parse_rolls(notation)
 
@@ -12,7 +12,7 @@ class ScoreCard:
     # Rolls / Pins parsing
     # -----------------------
 
-    def _parse_rolls(self, notation: str) -> None:
+    def _parse_rolls(self, notation):
         """
         Rolls:
         - X = Strike (10)
@@ -21,9 +21,6 @@ class ScoreCard:
         - 0-9 = Pins
         """
         for ch in notation:
-            if ch in (" ", "|"):
-                continue
-
             if ch == "X":                 # Strike
                 self.rolls.append(10)
 
@@ -40,7 +37,7 @@ class ScoreCard:
     # Score (Frame logic)
     # -----------------------
 
-    def score(self) -> int:
+    def score(self):
         score = 0
         roll_index = 0
 
@@ -63,17 +60,17 @@ class ScoreCard:
     # Frame helpers
     # -----------------------
 
-    def _is_strike(self, i: int) -> bool:
+    def _is_strike(self, i):
         return self.rolls[i] == 10
 
-    def _is_spare(self, i: int) -> bool:
+    def _is_spare(self, i):
         return self.rolls[i] + self.rolls[i + 1] == 10
 
-    def _strike_bonus(self, i: int) -> int:
+    def _strike_bonus(self, i):
         return self.rolls[i + 1] + self.rolls[i + 2]
 
-    def _spare_bonus(self, i: int) -> int:
+    def _spare_bonus(self, i):
         return self.rolls[i + 2]
 
-    def _frame_pins(self, i: int) -> int:
+    def _frame_pins(self, i):
         return self.rolls[i] + self.rolls[i + 1]
