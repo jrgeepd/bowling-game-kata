@@ -22,4 +22,5 @@ Requiere python = >=3.11 requiere pipx 1.8.0 o mayor Entorno virtual ( opcional,
 ## Arquitectura basada en DDD
 
 Siguiendo este esquema en el que se imparten las palabras que se usaran en el dominio con el fin de que todos estemos " en sintonia"
+
 ![Mapa del Dominio](mapa del dominio.jpg)
