@@ -4,15 +4,15 @@ class ScoreCard:
     Domain: Bowling
     """
 
-    def __init__(self, notation):
+    def __init__(self, score_card):
         self.rolls: list[int] = []
-        self._parse_rolls(notation)
+        self._parse_rolls(score_card)
 
     # -----------------------
     # Rolls / Pins parsing
     # -----------------------
 
-    def _parse_rolls(self, notation):
+    def _parse_rolls(self, score_card):
         """
         Rolls:
         - X = Strike (10)
@@ -20,7 +20,7 @@ class ScoreCard:
         - - = Foul (0)
         - 0-9 = Pins
         """
-        for ch in notation:
+        for ch in score_card:
             if ch == "X":                 # Strike
                 self.rolls.append(10)
 
