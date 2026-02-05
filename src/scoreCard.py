@@ -8,6 +8,9 @@ class ScoreCard:
         self.rolls: list[int] = []
         self._parse_rolls(score_card)
 
+    def get_rolls(self):
+        return self.rolls
+
     # -----------------------
     # Rolls / Pins parsing
     # -----------------------
@@ -39,20 +42,20 @@ class ScoreCard:
 
     def score(self):
         score = 0
-        roll_index = 0
+        roll = 0
 
         for frame in range(10):  # 10 Frames
-            if self._is_strike(roll_index):
-                score += 10 + self._strike_bonus(roll_index)
-                roll_index += 1
+            if self._is_strike(roll):
+                score += 10 + self._strike_bonus(roll)
+                roll += 1
 
-            elif self._is_spare(roll_index):
-                score += 10 + self._spare_bonus(roll_index)
-                roll_index += 2
+            elif self._is_spare(roll):
+                score += 10 + self._spare_bonus(roll)
+                roll += 2
 
             else:
-                score += self._frame_pins(roll_index)
-                roll_index += 2
+                score += self._frame_pins(roll)
+                roll += 2
 
         return score
 
